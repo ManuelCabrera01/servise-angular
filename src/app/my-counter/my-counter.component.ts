@@ -1,16 +1,21 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CounterService } from '../service/counter.service';
 
 @Component({
   selector: 'app-my-counter',
   templateUrl: './my-counter.component.html',
   styleUrls: ['./my-counter.component.css'],
-  encapsulation: ViewEncapsulation.None
+
+  // encapsulation: ViewEncapsulation.None
+  providers: [CounterService]
 })
 export class MyCounterComponent implements OnInit {
+constructor(private theCounter: CounterService) {}
 
-  constructor() { }
 
   ngOnInit() {
   }
-
+  incrementCounter() {
+      this.theCounter.increment();
+    }
 }
